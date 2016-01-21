@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -15,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSplitPane;
@@ -83,7 +85,6 @@ class InicioCineVentanas2 extends Thread{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		pantalla = new JFrame();
 		pantalla.setBackground(Color.decode("#27364A"));
 		pantalla.setResizable(false);
 		pantalla.getContentPane().setBackground(Color.decode("#27364A"));
@@ -106,7 +107,6 @@ class InicioCineVentanas2 extends Thread{
 		panel.setBackground(Color.decode("#27364A"));
 		splitPane.setRightComponent(panel);
 
-		
 		panel_2ArribaDetalle.setBackground(Color.decode("#17202C"));
 
 		panel_3AbajoDetalle.repaint();
@@ -114,25 +114,49 @@ class InicioCineVentanas2 extends Thread{
 		panel_3AbajoDetalle.repaint();
 		panel_3AbajoDetalle.setForeground(Color.WHITE);
 		panel_3AbajoDetalle.setBackground(Color.decode("#17202C"));
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(23, 32, 44));
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(panel_2ArribaDetalle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel_3AbajoDetalle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE))
-					.addContainerGap(19, Short.MAX_VALUE))
-		);
+		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(panel_2, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+								.addComponent(panel_2ArribaDetalle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(panel_3AbajoDetalle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 544,
+										Short.MAX_VALUE))
+						.addContainerGap(39, Short.MAX_VALUE)));
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel_2ArribaDetalle, GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_3AbajoDetalle, GroupLayout.PREFERRED_SIZE, 525, GroupLayout.PREFERRED_SIZE)
-					.addGap(21))
-		);
+				gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addGroup(
+								gl_panel.createSequentialGroup()
+										.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 44,
+												GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(panel_2ArribaDetalle, GroupLayout.PREFERRED_SIZE, 44,
+										GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED)
+				.addComponent(panel_3AbajoDetalle, GroupLayout.PREFERRED_SIZE, 525, GroupLayout.PREFERRED_SIZE)
+				.addGap(21)));
+		// fecha del sistema
+		LocalDate hoy = LocalDate.now();
+
+		JLabel etiquetaFecha = new JLabel(hoy.getDayOfMonth() + "-" + hoy.getMonthValue() + "-" + hoy.getYear());
+
+		etiquetaFecha.setForeground(Color.WHITE);
+		etiquetaFecha.setHorizontalAlignment(SwingConstants.CENTER);
+		etiquetaFecha.setFont(new Font("Tahoma", Font.BOLD, 20));
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup().addContainerGap()
+						.addComponent(etiquetaFecha, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+						.addContainerGap()));
+		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup().addContainerGap()
+						.addComponent(etiquetaFecha, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		panel_2.setLayout(gl_panel_2);
 		panel_2ArribaDetalle.setLayout(new GridLayout(1, 0, 0, 0));
 		panel_3AbajoDetalle.setLayout(new GridLayout(0, 9, 0, 0));
 
@@ -169,18 +193,19 @@ class InicioCineVentanas2 extends Thread{
 		
 		
 		panel.setLayout(gl_panel);
+		panel.setLayout(gl_panel);
 
 		JPanel panel_1 = new JPanel();
 		splitPane.setLeftComponent(panel_1);
 
 		JLabel etiquetaImagen = new JLabel("");
-		etiquetaImagen.setIcon(new ImageIcon(InicioCine.class.getResource("/imagenes/Sinsajo.PNG")));
+		etiquetaImagen.setIcon(new ImageIcon(InicioCine.class.getResource(Interfaz.pelicula.getImagenCartel())));
 
-		JLabel etiquetaTitulo = new JLabel("SINSAJO");
+		JLabel etiquetaTitulo = new JLabel(Interfaz.pelicula.getTitulo());
 		etiquetaTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		etiquetaTitulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
-		JLabel etiquetaSpnosis = new JLabel("Spnosis");
+		JLabel etiquetaSpnosis = new JLabel(Interfaz.pelicula.getSinopsis());
 
 		etiquetaSpnosis.setVerticalAlignment(SwingConstants.TOP);
 		etiquetaSpnosis.setHorizontalAlignment(SwingConstants.LEFT);
@@ -193,17 +218,49 @@ class InicioCineVentanas2 extends Thread{
 		btnNewButton_1.setBorder(null);
 
 		btnNewButton_1.setIcon(new ImageIcon(InicioCine.class.getResource("/imagenesAsientos/libre16.png")));
+		// volver a la ventana principal
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InicioCine.main(null);
+
+				pantalla.dispose();
+			}
+		});
+
+		JButton btnReservar = new JButton("Reservar");
+		btnReservar.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
+			public void actionPerformed(ActionEvent e) {
+
+				Object[] options = { "Aceptar", "Cancelar" };
+				JOptionPane.showOptionDialog(null, ListasCine.listaReservaFinal.toString(), "lista", JOptionPane.DEFAULT_OPTION,
+						JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+
+				if (options != null) {
+					System.out.println("aceptar");
+					// Creamos el pdf
+
+				} else
+					System.out.println("cancelar");
+				// Se cancela la reserva y vuelve al estado anterior
+
+			}
+		});
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1
 				.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel_1.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panel_1.createSequentialGroup()
+								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_panel_1.createSequentialGroup().addGap(10)
 												.addComponent(btnNewButton_1))
 						.addComponent(etiquetaSpnosis, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel_1.createSequentialGroup().addGap(34).addComponent(etiquetaImagen))
 						.addComponent(etiquetaTitulo, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE))
-				.addContainerGap()));
+				.addContainerGap())
+				.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup().addGap(41).addComponent(btnVolver)
+						.addGap(18).addComponent(btnReservar).addContainerGap(32, Short.MAX_VALUE)));
 		gl_panel_1
 				.setVerticalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup().addContainerGap().addComponent(etiquetaTitulo)
@@ -211,7 +268,10 @@ class InicioCineVentanas2 extends Thread{
 								.addComponent(etiquetaSpnosis, GroupLayout.PREFERRED_SIZE, 48,
 										GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnNewButton_1)
-								.addContainerGap(233, Short.MAX_VALUE)));
+								.addPreferredGap(ComponentPlacement.RELATED, 430, Short.MAX_VALUE)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE).addComponent(btnVolver)
+										.addComponent(btnReservar))
+								.addGap(24)));
 		panel_1.setLayout(gl_panel_1);
 		pantalla.getContentPane().setLayout(groupLayout);
 	}

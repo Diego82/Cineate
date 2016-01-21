@@ -68,6 +68,7 @@ class ListasCine{
 	//private List<Integer> listar = new ArrayList<Integer>();
 	//asi si : 
 	
+	
 	JPanel panel_3AbajoDetalle = new JPanel();
 	JPanel panel_2ArribaDetalle = new JPanel();
 	JButton asiento[] = new JButton[41];
@@ -75,6 +76,12 @@ class ListasCine{
 	ButtonGroup grupoRadioBotones= new ButtonGroup();
 	List<JButton> listaAsientos1 = Collections.synchronizedList(new ArrayList<JButton>());
 	List<Reserva> listaReservas = Collections.synchronizedList(new ArrayList<Reserva>());//lista asientos con su estado
+	
+	//para decir cuales estan reservados
+		static List<Reserva>  listaReservaFinal  =  Collections.synchronizedList(new ArrayList<Reserva>());// Esta lista nos 
+																				//mostrara los asientos 
+																				//que hemos reservado
+	
 	
 		//listas de la pelicula 1
 		List<Reserva> listaReservas1 = Collections.synchronizedList(new ArrayList<Reserva>());//lista asientos con su estado
