@@ -318,6 +318,9 @@ class InicioCineVentanas8 extends Thread{
 			hora.getRadioBoton().setText(horasArray[i]);*/
 			
 			grupoRadioBotones.add(RBoton);
+			RBoton.setBackground(Color.decode("#17202C"));
+			RBoton.setForeground(Color.WHITE);
+
 			panel_2ArribaDetalle.add(RBoton);
 			
 			RBoton.addActionListener(new ActionListener() {
