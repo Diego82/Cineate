@@ -84,7 +84,7 @@ class Interfaz extends Thread{
 
 				Thread hilo1 = new InicioCineVentanas1(listas);
 				hilo1.start();
-				frame.dispose();
+				frame.setVisible(false);
 
 			}
 			
@@ -100,7 +100,7 @@ class Interfaz extends Thread{
 				Thread hilo1 = new InicioCineVentanas2(listas);
 				hilo1.start();
 				
-				frame.dispose();
+				frame.setVisible(false);
 			}
 		});
 		botonSinsajo.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/Sinsajo.PNG")));
@@ -113,7 +113,7 @@ class Interfaz extends Thread{
 				Thread hilo1 = new InicioCineVentanas3(listas);
 				hilo1.start();
 				
-				frame.dispose();
+				frame.setVisible(false);
 			}
 		});
 		botonStarWars.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/StarWars.PNG")));
@@ -127,7 +127,7 @@ class Interfaz extends Thread{
 				Thread hilo1 = new InicioCineVentanas4(listas);
 				hilo1.start();
 				
-				frame.dispose();
+				frame.setVisible(false);
 			}
 		});
 		botonHotel.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/hotel.PNG")));
@@ -140,7 +140,7 @@ class Interfaz extends Thread{
 				Thread hilo1 = new InicioCineVentanas5(listas);
 				hilo1.start();
 				
-				frame.dispose();
+				frame.setVisible(false);
 			}
 		});
 		botonArlo.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/arlo.PNG")));
@@ -153,7 +153,7 @@ class Interfaz extends Thread{
 				Thread hilo1 = new InicioCineVentanas6(listas);
 				hilo1.start();
 				
-				frame.dispose();
+				frame.setVisible(false);
 				
 			}
 		});
@@ -167,7 +167,7 @@ class Interfaz extends Thread{
 				Thread hilo1 = new InicioCineVentanas7(listas);
 				hilo1.start();
 				
-				frame.dispose();
+				frame.setVisible(false);
 			}
 		});
 		botonPuente.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/puente.PNG")));
@@ -180,7 +180,7 @@ class Interfaz extends Thread{
 				Thread hilo1 = new InicioCineVentanas8(listas);
 				hilo1.start();
 				
-				frame.dispose();
+				frame.setVisible(false);
 			}
 		});
 		botonSicario.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/sicario.PNG")));

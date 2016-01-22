@@ -222,8 +222,10 @@ class InicioCineVentanas8 extends Thread{
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InicioCine.main(null);
+				//InicioCine.main(null);
 
+				Interfaz in = new Interfaz();
+				in.frame.setVisible(true);
 				pantalla.dispose();
 			}
 		});
