@@ -9,7 +9,7 @@ import javax.swing.JRadioButton;
 
 import com.google.zxing.qrcode.encoder.QRCode;
 
-import salacine.InicioCine;
+import salacine.MainCine;
 
 public class Reserva {
 
@@ -66,7 +66,7 @@ public class Reserva {
 		this.asiento = columna;
 		this.reserva = reserva;
 		boton=new JButton("");
-		boton.setIcon(new ImageIcon(InicioCine.class.getResource("/imagenesAsientos/libre16.png")));
+		boton.setIcon(new ImageIcon(MainCine.class.getResource("/imagenesAsientos/libre16.png")));
 		boton.setOpaque(false);
 		boton.setContentAreaFilled(false);
 		boton.setBorderPainted(false);

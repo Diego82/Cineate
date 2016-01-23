@@ -155,7 +155,7 @@ class InicioCineVentanas2 extends Thread{
 		splitPane.setLeftComponent(panel_1);
 
 		JLabel etiquetaImagen = new JLabel("");
-		etiquetaImagen.setIcon(new ImageIcon(InicioCine.class.getResource(PantallaInicial.pelicula.getImagenCartel())));
+		etiquetaImagen.setIcon(new ImageIcon(MainCine.class.getResource(PantallaInicial.pelicula.getImagenCartel())));
 
 		JLabel etiquetaTitulo = new JLabel(PantallaInicial.pelicula.getTitulo());
 		etiquetaTitulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -173,7 +173,7 @@ class InicioCineVentanas2 extends Thread{
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setBorder(null);
 
-		btnNewButton_1.setIcon(new ImageIcon(InicioCine.class.getResource("/imagenesAsientos/libre16.png")));
+		btnNewButton_1.setIcon(new ImageIcon(MainCine.class.getResource("/imagenesAsientos/libre16.png")));
 		// volver a la ventana principal
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {

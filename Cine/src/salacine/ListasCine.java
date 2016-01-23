@@ -176,12 +176,12 @@ public class ListasCine{
 		if (sillonAux.isReserva()) {
 			System.out.println("PINTA OCUPADO");
 			sillonAux.getBoton().setIcon(
-					new ImageIcon(InicioCine.class.getResource("/imagenesAsientos/ocupado16.png")));
+					new ImageIcon(MainCine.class.getResource("/imagenesAsientos/ocupado16.png")));
 			sillonAux.setReserva(false);
 		} else {
 			System.out.println("PINTA LIBRE");
 			sillonAux.getBoton().setIcon(
-					new ImageIcon(InicioCine.class.getResource("/imagenesAsientos/libre16.png")));
+					new ImageIcon(MainCine.class.getResource("/imagenesAsientos/libre16.png")));
 			sillonAux.setReserva(true);
 		}
 		System.out.println("Valores de la lista"+listaAux);

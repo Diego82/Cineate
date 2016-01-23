@@ -1,6 +1,6 @@
 package salacine;
 
-public class InicioCine {
+public class MainCine {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -9,10 +9,7 @@ public class InicioCine {
 		
 		Thread hilo1 = new PantallaInicial(listas);
 		Thread hilo2 = new PantallaInicial(listas);
-		
-		/*Thread hilo1 = new InicioCineVentanas(listas);
-		Thread hilo2 = new InicioCineVentanas(listas);*/
-		
+				
 		System.out.println("Arrancando hilos");
 		hilo1.start();
 		hilo2.start();
@@ -25,7 +22,7 @@ public class InicioCine {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("imprimimos las lista creadas desde la main");
 		System.out.println(listas);
 	}
 }

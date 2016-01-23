@@ -168,6 +168,15 @@ class PantallaInicial extends Thread{
 		});
 		botonSicario.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/sicario.PNG")));
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
