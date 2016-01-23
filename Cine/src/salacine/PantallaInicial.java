@@ -1,68 +1,52 @@
 package salacine;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import java.awt.GridLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-
-import clases.ListadoPeliculas;
 import clases.Pelicula;
-
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Canvas;
 
-class Interfaz extends Thread{
+//Clase que abre la primera pantalla donde se eligen las peliculas
+//Se crea un panel y un array de botones
+
+class PantallaInicial extends Thread{
 	
 	static ListasCine listas;
 	JFrame frame = new JFrame();
 	static Pelicula pelicula;
 	
-	public Interfaz(ListasCine listas){
-		this.listas = listas;
+	public PantallaInicial(ListasCine listas){
+		PantallaInicial.listas = listas;
 		System.out.println("Esto sale ahora");
 	}
-
 	/**
-	 * Launch the application.
+	 * Launch the application. 
 	 */
 	@Override
 	public void run() {
 		try {
-			Interfaz window = new Interfaz();
+			PantallaInicial window = new PantallaInicial();
 			window.frame.setVisible(true);
-			/*listas.listaReservas1 = this.listaReservas1Aux;
-			listas.listaReservas2 = this.listaReservas2Aux;
-			listas.listaReservas3 = this.listaReservas3Aux;
-			listas.listaReservas4 = this.listaReservas4Aux;
-			listas.listaReservas5 = this.listaReservas5Aux;*/
-			
-			
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * Create the application.
 	 */
-	public Interfaz() {
+	public PantallaInicial() {
 		initialize();
 	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -71,13 +55,13 @@ class Interfaz extends Thread{
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(Color.decode("#27364A"));
 		
+		//Se crea el panel y los botones para acceder a las peliculas
+		//Al pinchar se 
 		JPanel panel = new JPanel();
-	////////boton
+		
 		JButton botonApellidosCatalanes = new JButton("");
 		botonApellidosCatalanes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//panelPelicula.main(null);
-				
 				pelicula= new Pelicula(1, "OCHO APELLIDOS CATALANES", 
 						"Las alarmas de Koldo (Karra Elejalde) se encienden cuando se entera de que su hija Amaia ", 
 						"/imagenes/ApellidosCatalanes.PNG");
@@ -87,10 +71,9 @@ class Interfaz extends Thread{
 				frame.setVisible(false);
 
 			}
-			
 		});
 		
-		botonApellidosCatalanes.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/ApellidosCatalanes.PNG")));
+		botonApellidosCatalanes.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/ApellidosCatalanes.PNG")));
 		
 		JButton botonSinsajo = new JButton("");
 		botonSinsajo.addActionListener(new ActionListener() {
@@ -103,7 +86,7 @@ class Interfaz extends Thread{
 				frame.setVisible(false);
 			}
 		});
-		botonSinsajo.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/Sinsajo.PNG")));
+		botonSinsajo.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/Sinsajo.PNG")));
 		
 		JButton botonStarWars = new JButton("");
 		botonStarWars.addActionListener(new ActionListener() {
@@ -116,7 +99,7 @@ class Interfaz extends Thread{
 				frame.setVisible(false);
 			}
 		});
-		botonStarWars.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/StarWars.PNG")));
+		botonStarWars.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/StarWars.PNG")));
 		
 		JButton botonHotel = new JButton("");
 		botonHotel.setBackground(Color.decode("#27364A"));
@@ -130,7 +113,7 @@ class Interfaz extends Thread{
 				frame.setVisible(false);
 			}
 		});
-		botonHotel.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/hotel.PNG")));
+		botonHotel.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/hotel.PNG")));
 		
 		JButton botonArlo = new JButton("");
 		botonArlo.addActionListener(new ActionListener() {
@@ -143,7 +126,7 @@ class Interfaz extends Thread{
 				frame.setVisible(false);
 			}
 		});
-		botonArlo.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/arlo.PNG")));
+		botonArlo.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/arlo.PNG")));
 		
 		JButton botonKrampus = new JButton("");
 		botonKrampus.addActionListener(new ActionListener() {
@@ -157,7 +140,7 @@ class Interfaz extends Thread{
 				
 			}
 		});
-		botonKrampus.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/krampus.PNG")));
+		botonKrampus.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/krampus.PNG")));
 		
 		JButton botonPuente = new JButton("");
 		botonPuente.addActionListener(new ActionListener() {
@@ -170,7 +153,7 @@ class Interfaz extends Thread{
 				frame.setVisible(false);
 			}
 		});
-		botonPuente.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/puente.PNG")));
+		botonPuente.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/puente.PNG")));
 		
 		JButton botonSicario = new JButton("");
 		botonSicario.addActionListener(new ActionListener() {
@@ -183,7 +166,8 @@ class Interfaz extends Thread{
 				frame.setVisible(false);
 			}
 		});
-		botonSicario.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/sicario.PNG")));
+		botonSicario.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/sicario.PNG")));
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -231,7 +215,7 @@ class Interfaz extends Thread{
 					.addContainerGap(124, Short.MAX_VALUE))
 		);
 		
-		JLabel textoCabecera = new JLabel("RESERVEA-T");
+		JLabel textoCabecera = new JLabel("Cineate");
 		textoCabecera.setVerticalAlignment(SwingConstants.BOTTOM);
 		textoCabecera.setFont(new Font("Godzilla", Font.PLAIN, 26));
 		textoCabecera.setHorizontalAlignment(SwingConstants.CENTER);

@@ -199,13 +199,13 @@ class InicioCineVentanas5 extends Thread{
 		splitPane.setLeftComponent(panel_1);
 
 		JLabel etiquetaImagen = new JLabel("");
-		etiquetaImagen.setIcon(new ImageIcon(InicioCine.class.getResource(Interfaz.pelicula.getImagenCartel())));
+		etiquetaImagen.setIcon(new ImageIcon(InicioCine.class.getResource(PantallaInicial.pelicula.getImagenCartel())));
 
-		JLabel etiquetaTitulo = new JLabel(Interfaz.pelicula.getTitulo());
+		JLabel etiquetaTitulo = new JLabel(PantallaInicial.pelicula.getTitulo());
 		etiquetaTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		etiquetaTitulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
-		JLabel etiquetaSpnosis = new JLabel(Interfaz.pelicula.getSinopsis());
+		JLabel etiquetaSpnosis = new JLabel(PantallaInicial.pelicula.getSinopsis());
 
 		etiquetaSpnosis.setVerticalAlignment(SwingConstants.TOP);
 		etiquetaSpnosis.setHorizontalAlignment(SwingConstants.LEFT);
@@ -224,7 +224,7 @@ class InicioCineVentanas5 extends Thread{
 			public void actionPerformed(ActionEvent e) {
 				//InicioCine.main(null);
 
-				Interfaz in = new Interfaz();
+				PantallaInicial in = new PantallaInicial();
 				in.frame.setVisible(true);
 				pantalla.dispose();
 			}

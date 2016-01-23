@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
+import com.google.zxing.qrcode.encoder.QRCode;
+
 import salacine.InicioCine;
 
 public class Reserva {
@@ -18,13 +20,34 @@ public class Reserva {
 	private String hora;
 	private String nombre_sala;
 	private int fila;
-	private int columna;
+	private int asiento;
 	private boolean reserva;
-	
 	private JButton boton;
 	private JRadioButton radioBoton;
+	private QRCode codigoQR;
 	
 	/**
+	 * Constructor para los datos del PDF
+	 * @param fecha
+	 * @param hora
+	 * @param nombre_sala
+	 * @param fila
+	 * @param asiento
+	 * @param reserva
+	 */
+	
+	public Reserva(String fecha, String hora, String nombre_sala, int fila, int asiento, boolean reserva) {
+		super();
+		this.fecha = fecha;
+		this.hora = hora;
+		this.nombre_sala = nombre_sala;
+		this.fila = fila;
+		this.asiento = asiento;
+		this.reserva = reserva;
+			}
+	/**
+	 * 
+	 * @param sala
 	 * @param id_pase
 	 * @param fecha
 	 * @param hora
@@ -40,7 +63,7 @@ public class Reserva {
 		this.hora = hora;
 		this.nombre_sala = nombre_sala;
 		this.fila = fila;
-		this.columna = columna;
+		this.asiento = columna;
 		this.reserva = reserva;
 		boton=new JButton("");
 		boton.setIcon(new ImageIcon(InicioCine.class.getResource("/imagenesAsientos/libre16.png")));
@@ -48,7 +71,6 @@ public class Reserva {
 		boton.setContentAreaFilled(false);
 		boton.setBorderPainted(false);
 		boton.setBorder(null);
-		//System.out.println("diegui");
 		radioBoton=new JRadioButton("");
 
 		radioBoton.setForeground(Color.WHITE);
@@ -100,7 +122,7 @@ public class Reserva {
 		this.fila = fila;
 	}
 	public int getColumna() {
-		return columna;
+		return asiento;
 	}
 	public JButton getBoton() {
 		return boton;
@@ -109,7 +131,7 @@ public class Reserva {
 		this.boton = boton;
 	}
 	public void setColumna(int columna) {
-		this.columna = columna;
+		this.asiento = columna;
 	}
 	public boolean isReserva() {
 		return reserva;
@@ -117,9 +139,22 @@ public class Reserva {
 	public void setReserva(boolean reserva) {
 		this.reserva = reserva;
 	}
-	/*@Override
+	public int getAsiento() {
+		return asiento;
+	}
+	public void setAsiento(int asiento) {
+		this.asiento = asiento;
+	}
+	public QRCode getCodigoQR() {
+		return codigoQR;
+	}
+	public void setCodigoQR(QRCode codigoQR) {
+		this.codigoQR = codigoQR;
+	}
+	@Override
 	public String toString() {
-		return "Pase [id_pase=" + id_pase + ", fecha=" + fecha + ", hora=" + hora + ", nombre_sala=" + nombre_sala
-				+ ", fila=" + fila + ", columna=" + columna + ", reserva=" + reserva + "]";
-	}*/	
+		return "Reserva [sala=" + sala + ", id_pase=" + id_pase + ", fecha=" + fecha + ", hora=" + hora
+				+ ", nombre_sala=" + nombre_sala + ", fila=" + fila + ", asiento=" + asiento + ", reserva=" + reserva + "\n";
+	}
+	
 }
