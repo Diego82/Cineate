@@ -16,12 +16,6 @@ import clases.Reserva;
 
 public class ListasCine {
 
-
-	JPanel panel_3AbajoDetalle = new JPanel();
-	JPanel panel_2ArribaDetalle = new JPanel();
-	JButton asiento[] = new JButton[41];
-	JRadioButton hora[] = new JRadioButton[4];
-	ButtonGroup grupoRadioBotones= new ButtonGroup();
 	List<JButton> listaAsientos1 = Collections.synchronizedList(new ArrayList<JButton>());
 	List<Reserva> listaReservas = Collections.synchronizedList(new ArrayList<Reserva>());//lista asientos con su estado
 	// listados de la pelicula 1
@@ -158,33 +152,15 @@ public class ListasCine {
 
 		Reserva sillonAux = listaAux.get(i);
 
-		if (sillonAux.isReserva()) {
-			System.out.println("PINTA OCUPADO");
+		if (listaAux.get(i).isReserva()) {
+			System.out.println("PINTA OCUPADO el asiento: "+i);
 			sillonAux.getBoton().setIcon(new ImageIcon(MainCine.class.getResource("/imagenesAsientos/ocupado16.png")));
 			sillonAux.setReserva(false);
 		} else {
-			System.out.println("PINTA LIBRE");
+			System.out.println("PINTA LIBRE el asiento: "+i);
 			sillonAux.getBoton().setIcon(new ImageIcon(MainCine.class.getResource("/imagenesAsientos/libre16.png")));
 			sillonAux.setReserva(true);
 		}
-		System.out.println("Valores de la lista" + listaAux);
-	}
-
-	// PINTAR LOS BOTONES DE LAS HORAS
-	public List<Reserva> crearHorasPrincipal(int numeroLista) {
-		switch (numeroLista) {
-		case 1:
-			return listaReservas1;
-		case 2:
-			return listaReservas2;
-		case 3:
-			return listaReservas3;
-		case 4:
-			return listaReservas4;
-		case 5:
-			return listaReservas5;
-		default:
-			return null;
-		}
+		// System.out.println("Valores de la lista" + listaAux);
 	}
 }
