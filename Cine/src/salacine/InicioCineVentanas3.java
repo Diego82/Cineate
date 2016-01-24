@@ -37,7 +37,6 @@ class InicioCineVentanas3 extends Thread{
 	JRadioButton hora[] = new JRadioButton[4];
 	ButtonGroup grupoRadioBotones= new ButtonGroup();
 	ArrayList<JButton> listaAsientos1 = new ArrayList<JButton>();
-	
 	ArrayList<JRadioButton> listaHoras = new ArrayList<JRadioButton>();
 	//listas para las horas
 	ArrayList<String> horas= new ArrayList<String>();

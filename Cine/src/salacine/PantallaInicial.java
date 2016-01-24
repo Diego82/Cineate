@@ -56,7 +56,7 @@ class PantallaInicial extends Thread{
 		frame.getContentPane().setBackground(Color.decode("#27364A"));
 		
 		//Se crea el panel y los botones para acceder a las peliculas
-		//Al pinchar se 
+		//Al pinchar se pasa a elegir los asientos
 		JPanel panel = new JPanel();
 		
 		JButton botonApellidosCatalanes = new JButton("");
@@ -167,15 +167,6 @@ class PantallaInicial extends Thread{
 			}
 		});
 		botonSicario.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/sicario.PNG")));
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(

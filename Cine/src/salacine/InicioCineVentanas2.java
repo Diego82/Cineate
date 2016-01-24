@@ -144,9 +144,37 @@ class InicioCineVentanas2 extends Thread{
 		panel_2ArribaDetalle.setLayout(new GridLayout(1, 0, 0, 0));
 		panel_3AbajoDetalle.setLayout(new GridLayout(0, 9, 0, 0));
 
+		// LLAMAMOS AL METODO PARA PINTAR LA SALA
+		/*listas.crearHoras();
+		listas.crearSala(1);
+		listas.crearSala(2);
+		listas.crearSala(3);
+		listas.crearSala(4);
+		listas.crearSala(5);*/
+
+		
+		
 		
 		// LLAMAMOS AL METODO PARA PINTAR LA SALA
-		crearHoras();	
+		
+		
+		
+				crearHoras();
+				
+				/*if (listas.listaReservas1.size()==0){
+				System.out.println("Tamaño de la lista antes de llamar a crear sala "+listas.listaReservas1.size());
+				crearSala(listas.listaReservas1);
+				crearSala(listas.listaReservas2);
+				crearSala(listas.listaReservas3);
+				crearSala(listas.listaReservas4);
+				crearSala(listas.listaReservas5);
+				}else System.out.println("Ya se han creado las listas");
+				System.out.println("Tamaño de la lista despues de llamar a crear sala "+listas.listaReservas1.size());*/
+		
+		
+			
+
+		
 		
 		panel.setLayout(gl_panel);
 		panel.setLayout(gl_panel);
@@ -178,6 +206,8 @@ class InicioCineVentanas2 extends Thread{
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//InicioCine.main(null);
+
 				PantallaInicial in = new PantallaInicial();
 				in.frame.setVisible(true);
 				pantalla.dispose();
@@ -203,7 +233,6 @@ class InicioCineVentanas2 extends Thread{
 
 			}
 		});
-		
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1
 				.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
@@ -232,6 +261,10 @@ class InicioCineVentanas2 extends Thread{
 		panel_1.setLayout(gl_panel_1);
 		pantalla.getContentPane().setLayout(groupLayout);
 	}
+	
+
+	
+	
 	//PINTAR SALA
 		private  void pintarSala(List<Reserva> listaSillonFinal) {
 			panel_3AbajoDetalle.removeAll();
@@ -255,6 +288,8 @@ class InicioCineVentanas2 extends Thread{
 			
 		}
 	
+	
+	
 	//PINTAR LOS BOTONES DE LAS HORAS
 	private  void crearHoras() {
 		System.out.println("dany");
@@ -264,6 +299,10 @@ class InicioCineVentanas2 extends Thread{
 			
 			JRadioButton RBoton = new JRadioButton(horasArray[i]);
 			//arreglar esto
+			/*Reserva hora=new Reserva(i,i, "1", horasArray[i], "1", 0, 1, true);
+			grupoRadioBotones.add(hora.getRadioBoton());
+			hora.getRadioBoton().setText(horasArray[i]);*/
+			
 			grupoRadioBotones.add(RBoton);
 			RBoton.setBackground(Color.decode("#17202C"));
 			RBoton.setForeground(Color.WHITE);
@@ -272,36 +311,43 @@ class InicioCineVentanas2 extends Thread{
 			
 			RBoton.addActionListener(new ActionListener() {
 				@Override
-				public void actionPerformed(ActionEvent arg0) {		
+				public void actionPerformed(ActionEvent arg0) {
+					
 					System.out.println("ENTRA AL ESCUCHADOR");
 					switch (RBoton.getText()) {
-						case "16:00":				
-							pintarSala(listas.listaReservas6);	
-							break;
-						case "18:00":
-							pintarSala(listas.listaReservas7);
-							break;
-						case "20:00":
-							pintarSala(listas.listaReservas8);
-							break;
-						case "22:00":
-							pintarSala(listas.listaReservas9);
-							break;
-						case "24:00":
-							pintarSala(listas.listaReservas10);					
-							break;
-						default:
-							break;
-						}
+					case "16:00":
+						pintarSala(listas.listaReservas6);	
+						break;
+					case "18:00":
+						pintarSala(listas.listaReservas7);
+						break;
+					case "20:00":
+						pintarSala(listas.listaReservas8);
+						break;
+					case "22:00":
+						pintarSala(listas.listaReservas9);
+						break;
+					case "24:00":
+						pintarSala(listas.listaReservas10);					
+						break;
+					default:
+						break;
+					}
 					System.out.println("Termina el escuchador de crear horas horas");
 				}
 				
-			});			
-		}	
+			});
+			
+		
+			
+			
+			}	
 		System.out.println("Termina crear horas");
 		//repintar
 		panel_3AbajoDetalle.repaint();
 		pantalla.repaint();
 		pantalla.revalidate();
+		
+		
 	}
 }
