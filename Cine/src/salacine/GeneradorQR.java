@@ -20,7 +20,7 @@ public class GeneradorQR {
 	
 	//Definimos las variables estáticas
 	private static final String FORMATO_IMAGEN = "png";
-	private static final String RUTA_IMAGEN = System.getProperty("user.home") + "/qrZxing.png";
+	private static final String RUTA_IMAGEN = "qrZxing.png";
 	private static final int ancho = 500;
 	private static final int alto = 500;
 	private static String datos;
@@ -28,7 +28,7 @@ public class GeneradorQR {
 	private static int identificador=0;
 	
 	public static void main() throws IOException {
-		
+		//
 		identificador++;
 		/*POSICION 0: CARTEL PELICULA
 		POSICION 1 : TITULO PELICULA
@@ -56,11 +56,11 @@ public class GeneradorQR {
 		
 		datos+=butacas.substring(0, butacas.length()-2);
 		
-		datos+="\n ID: "+identificador;
+		datos+="\nID: "+identificador;
 		
 		butacas="";
 		
-		ListasCine.listaDatosQR.clear();
+		
 		/*Creamos el objeto que tiene los datos a dibujar así como 
 		el Writer para darle formato a los datos*/
 		

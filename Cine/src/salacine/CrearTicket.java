@@ -21,10 +21,11 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class CrearTicket {
-	static Image foto;
-
+	private static Image foto;
+	private static String butacas;
+	private static int identificadorTicket=0;
 	public static void main(String[] args) {
-		
+		identificadorTicket++;
 		/*POSICION 0: CARTEL PELICULA
 		POSICION 1 : TITULO PELICULA
 		POSICION 2: SESION
@@ -32,7 +33,7 @@ public class CrearTicket {
 		POSICION 4: HILO
 		POSICION 5 EN ADELANTE: ASIENTOS RESERVADOS*/
 		
-		
+		//
 		// Se crea el documento
 		Document documento = new Document();
 
@@ -62,12 +63,14 @@ public class CrearTicket {
 		documento.open();
 
 		try {
-			documento.add(new Paragraph("Ticket nº: 1"));
-			documento.add(new Paragraph("PELICULA: OCHO APELLIDOS CATALANES \n" + "HORA: 16:00 H \n" + "BUTACA: 2",
+			
+			documento.add(new Paragraph("Ticket nº: "+identificadorTicket));
+			documento.add(new Paragraph(" "));
+			/*documento.add(new Paragraph("PELICULA: OCHO APELLIDOS CATALANES \n" + "HORA: 16:00 H \n" + "BUTACA: 2",
 					FontFactory.getFont("arial", // fuente
 							22, // tamaño
 							Font.ITALIC, // estilo
-							BaseColor.CYAN))); // color
+							BaseColor.CYAN))); // color*/
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,10 +80,9 @@ public class CrearTicket {
 
 		try {
 			GeneradorQR.main();
-			foto = Image.getInstance(System.getProperty("user.home") + "/qrZxing.png");
+			foto = Image.getInstance("qrZxing.png");
 			foto.scaleToFit(80, 80);
-			foto.setAlignment(Chunk.ALIGN_MIDDLE);
-			documento.add(foto);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -112,7 +114,7 @@ public class CrearTicket {
 		mitablacompleja.addCell(celda);
 
 		// fila 2
-		celda = new PdfPCell(new Paragraph("Pelicula: OCHO APELLIDOS CATALANES",
+		celda = new PdfPCell(new Paragraph("Pelicula: "+ListasCine.listaDatosQR.get(1),
 				FontFactory.getFont("arial", 
 						10, 
 						Font.BOLD))); // 
@@ -122,7 +124,7 @@ public class CrearTicket {
 
 		mitablacompleja.addCell(celda);
 		// FILA 3
-		celda = new PdfPCell(new Paragraph("Lugar: MULTICINES JAEN",
+		celda = new PdfPCell(new Paragraph("Lugar: MULTICINES CINEA-T",
 				FontFactory.getFont("arial",
 						10, 
 						Font.BOLD, 
@@ -133,7 +135,7 @@ public class CrearTicket {
 		mitablacompleja.addCell(celda);
 
 		// fila 4
-		celda = new PdfPCell(new Paragraph("Fecha: 19/12/2015",
+		celda = new PdfPCell(new Paragraph("Sesion: "+ListasCine.listaDatosQR.get(2),
 				FontFactory.getFont("arial", 
 						10, 
 						Font.BOLD, 
@@ -144,7 +146,7 @@ public class CrearTicket {
 		mitablacompleja.addCell(celda);
 
 		// fila 5
-		celda = new PdfPCell(new Paragraph("Hora: 16:00 H",
+		celda = new PdfPCell(new Paragraph("Fecha de compra: "+ListasCine.listaDatosQR.get(3),
 				FontFactory.getFont("arial",
 						10, 
 						Font.BOLD, 
@@ -155,7 +157,18 @@ public class CrearTicket {
 		mitablacompleja.addCell(celda);
 
 		// fila 6
-		celda = new PdfPCell(new Paragraph("Butaca: 2",
+		
+		butacas="Butacas Reservadas: ";
+		
+		
+		for(int i=5;i<=ListasCine.listaDatosQR.size()-1;i++){
+			butacas+=1+(Integer.parseInt(ListasCine.listaDatosQR.get(i).toString()))+", ";
+		}
+		
+		butacas=butacas.substring(0, butacas.length()-2);
+		
+		
+		celda = new PdfPCell(new Paragraph(butacas,
 				FontFactory.getFont("arial", 
 						10, 
 						Font.BOLD, 
@@ -165,6 +178,8 @@ public class CrearTicket {
 		celda.setBorderWidth(1.0f);
 		mitablacompleja.addCell(celda);
 
+		butacas="";
+		
 		/*
 		 * celda = new PdfPCell(new Paragraph("Eximido"));
 		 * celda.setBackgroundColor(BaseColor.LIGHT_GRAY);
@@ -172,7 +187,7 @@ public class CrearTicket {
 		 */
 
 		// fila 7
-		celda = new PdfPCell(new Paragraph("Comprador: ",
+		celda = new PdfPCell(new Paragraph("Comprador: "+ListasCine.listaDatosQR.get(4),
 				FontFactory.getFont("arial", 
 						10, 
 						Font.BOLD, 
@@ -191,6 +206,9 @@ public class CrearTicket {
 		}
 
 		documento.close();
+		
+		ListasCine.listaDatosQR.clear();
+		
 		Desktop d = Desktop.getDesktop();
 	    try {
 			d.open(new File("fichero.pdf"));
