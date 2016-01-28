@@ -242,7 +242,7 @@ class InicioCineVentanas1 extends Thread{
 
 				if (listas.sillones.size()!=0){
 				
-					// Creamos el pdf
+					// Creamos el pdf QR
 					//Preparamos la lista para pasarle los datos a la clase QR
 					listas.listaDatosQR.add(PantallaInicial.pelicula.getImagenCartel());
 					listas.listaDatosQR.add(PantallaInicial.pelicula.getTitulo());

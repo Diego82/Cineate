@@ -157,7 +157,7 @@ class ListasCine {
 				});
 			}
 		}
-		// crear sillon
+		// crear sillones
 		public Reserva crearSillon(int i) {
 			Reserva sillon = new Reserva(1, i, "1", "1", "1", 0, i, true);
 			return sillon;
