@@ -1,4 +1,4 @@
-package generadorQR;
+package generadorQR_NoUsa;
 
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;

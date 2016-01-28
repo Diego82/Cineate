@@ -1,4 +1,4 @@
-package generadorTicket;
+package generadorTicket_NoUsa;
 
 import java.awt.Color;
 import java.io.FileNotFoundException;
@@ -66,7 +66,7 @@ public class CrearPDF {
 		// Se inserta una imagen
 
 		try {
-			generadorQR.Generador.main(args);
+			generadorQR_NoUsa.Generador.main(args);
 			foto = Image.getInstance(System.getProperty("user.home") + "/qrZxing.png");
 			foto.scaleToFit(80, 80);
 			foto.setAlignment(Chunk.ALIGN_MIDDLE);

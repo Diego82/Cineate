@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import clases.Reserva;
 
 class InicioCineVentanas1 extends Thread{
-
+//
 	static ListasCine listas;
 	Timer timer;
 	JFrame pantalla = new JFrame();
@@ -255,6 +256,10 @@ class InicioCineVentanas1 extends Thread{
 					listas.sillones.clear();
 					listas.tiempoReserva.cancel();
 					listas.cuentaAtras = true;
+					
+					CrearTicket.main(null);
+						//Generador.main();
+					
 
 			}else JOptionPane.showMessageDialog(
 					   pantalla,
