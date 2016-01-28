@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,6 +42,8 @@ class InicioCineVentanas1 extends Thread{
 	ButtonGroup grupoRadioBotones= new ButtonGroup();
 	ArrayList<JButton> listaAsientos1 = new ArrayList<JButton>();
 	String sesion = null;
+	// lista que tiene las posiciones de los sillones
+	List<Integer> sillones = Collections.synchronizedList(new ArrayList<Integer>());
 	
 	ArrayList<JRadioButton> listaHoras = new ArrayList<JRadioButton>();
 	//listas para las horas
@@ -240,7 +243,14 @@ class InicioCineVentanas1 extends Thread{
 			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
 
-				if (listas.sillones.size()!=0){
+				System.out.println("Tamaño de lista propia "+ sillones.size() + " antes de igualarla");
+				
+				sillones = listas.sillones;
+				
+				System.out.println("Tamaño de lista propia "+ sillones.size() + " tamaño de lista comun "+listas.sillones.size());
+				
+				
+				if (sillones.size()!=0){
 				
 					// Creamos el pdf QR
 					//Preparamos la lista para pasarle los datos a la clase QR
@@ -249,22 +259,23 @@ class InicioCineVentanas1 extends Thread{
 					listas.listaDatosQR.add(sesion);
 					listas.listaDatosQR.add(hoy.getDayOfMonth() + "-" + hoy.getMonthValue() + "-" + hoy.getYear() + " // " 
 							+ hoy.getHour() + ":" + hoy.getMinute() + ":" + hoy.getSecond());
-					listas.listaDatosQR.add(Thread.currentThread());
+					listas.listaDatosQR.add(Thread.currentThread().getName());
 					
-					System.out.println(Thread.currentThread());
+					System.out.println(Thread.currentThread().getName());
 					
-					for (int i = 0; i < listas.sillones.size(); i++) {
+					for (int i = 0; i < sillones.size(); i++) {
 						
 						//listas.listaReservaFinal.get(listas.sillones.get(i)).getBoton().setEnabled(false);
 						
-						listas.listaReservaFinal.get(listas.sillones.get(i)).getBoton().setIcon(
+						listas.listaReservaFinal.get(sillones.get(i)).getBoton().setIcon(
 								new ImageIcon(MainCine.class.getResource("/imagenesAsientos/reservado.png")));
 						
-						listas.listaDatosQR.add(listas.listaReservaFinal.get(listas.sillones.get(i)).getAsiento());
-						System.out.println(listas.listaReservaFinal.get(listas.sillones.get(i)).getAsiento());
+						listas.listaDatosQR.add(listas.listaReservaFinal.get(sillones.get(i)).getAsiento());
+						System.out.println(listas.listaReservaFinal.get(sillones.get(i)).getAsiento());
 						
 						
 					}
+					sillones.clear();
 					listas.sillones.clear();
 					listas.tiempoReserva.cancel();
 					listas.cuentaAtras = true;
@@ -348,6 +359,7 @@ class InicioCineVentanas1 extends Thread{
 			hora.getRadioBoton().setText(horasArray[i]);*/
 			
 			grupoRadioBotones.add(RBoton);
+			
 			RBoton.setBackground(Color.decode("#17202C"));
 			RBoton.setForeground(Color.WHITE);
 
@@ -375,21 +387,53 @@ class InicioCineVentanas1 extends Thread{
 						break;
 
 					case "18:00":
+						
+						for (int j = 0; j < listas.listaReservas2.size(); j++) {
+							boolean reser = listas.listaReservas2.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "18:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas2;
 						pintarSala(listas.listaReservas2);
 						
 
 						break;
 					case "20:00":
+						
+						for (int j = 0; j < listas.listaReservas3.size(); j++) {
+							boolean reser = listas.listaReservas3.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "20:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas3;
 						pintarSala(listas.listaReservas3);
 						
 
 						break;
 					case "22:00":
+						
+						for (int j = 0; j < listas.listaReservas4.size(); j++) {
+							boolean reser = listas.listaReservas4.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "22:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas4;
 						pintarSala(listas.listaReservas4);
 						
 
 						break;
 					case "24:00":
+						
+						for (int j = 0; j < listas.listaReservas5.size(); j++) {
+							boolean reser = listas.listaReservas5.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "24:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas5;
 						pintarSala(listas.listaReservas5);
 						
 

@@ -23,15 +23,17 @@ class ListasCine {
 	Timer tiempoReserva;
 	List<JButton> listaAsientos1 = Collections.synchronizedList(new ArrayList<JButton>());
 	List<Reserva> listaReservas = Collections.synchronizedList(new ArrayList<Reserva>());
-	// lista que tiene las posiciones de los sillones
-	ArrayList<Integer> sillones = new ArrayList<Integer>();
+	
 	// para decir cuales estan reservados
 	static List<Reserva> listaReservaFinal = Collections.synchronizedList(new ArrayList<Reserva>());
 	// mostrara los asientos que hemos reservado
-	ArrayList<Reserva> listaReservasTemporal = new ArrayList<Reserva>();
+	List<Reserva> listaReservasTemporal = Collections.synchronizedList(new ArrayList<Reserva>());
 	//array con los datos a pasar a el QR
 	static ArrayList<Object> listaDatosQR = new ArrayList<Object>();
 
+	// list que tiene las posiciones de los sillones
+		List<Integer> sillones = Collections.synchronizedList(new ArrayList<Integer>());
+	
 	// listas de la pelicula 1
 	List<Reserva> listaReservas1 = Collections.synchronizedList(new ArrayList<Reserva>());
 	List<Reserva> listaReservas2 = Collections.synchronizedList(new ArrayList<Reserva>());

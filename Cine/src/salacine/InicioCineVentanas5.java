@@ -6,7 +6,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 
@@ -37,11 +39,12 @@ class InicioCineVentanas5 extends Thread{
 	JRadioButton hora[] = new JRadioButton[4];
 	ButtonGroup grupoRadioBotones= new ButtonGroup();
 	ArrayList<JButton> listaAsientos1 = new ArrayList<JButton>();
-	
+	String sesion = null;
 	ArrayList<JRadioButton> listaHoras = new ArrayList<JRadioButton>();
 	//listas para las horas
 	ArrayList<String> horas= new ArrayList<String>();
-	
+	// lista que tiene las posiciones de los sillones
+	List<Integer> sillones = Collections.synchronizedList(new ArrayList<Integer>());
 	
 	
 	public InicioCineVentanas5(ListasCine listas){
@@ -140,9 +143,10 @@ class InicioCineVentanas5 extends Thread{
 				.addComponent(panel_3AbajoDetalle, GroupLayout.PREFERRED_SIZE, 525, GroupLayout.PREFERRED_SIZE)
 				.addGap(21)));
 		// fecha del sistema
-		LocalDate hoy = LocalDate.now();
+				LocalDateTime hoy = LocalDateTime.now();
 
-		JLabel etiquetaFecha = new JLabel(hoy.getDayOfMonth() + "-" + hoy.getMonthValue() + "-" + hoy.getYear());
+				JLabel etiquetaFecha = new JLabel(hoy.getDayOfMonth() + "-" + hoy.getMonthValue() + "-" + hoy.getYear() + " // " 
+				+ hoy.getHour() + ":" + hoy.getMinute() + ":" + hoy.getSecond());
 
 		etiquetaFecha.setForeground(Color.WHITE);
 		etiquetaFecha.setHorizontalAlignment(SwingConstants.CENTER);
@@ -235,17 +239,45 @@ class InicioCineVentanas5 extends Thread{
 			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
 
-				Object[] options = { "Aceptar", "Cancelar" };
-				JOptionPane.showOptionDialog(null, ListasCine.listaReservaFinal.toString(), "lista", JOptionPane.DEFAULT_OPTION,
-						JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+				sillones = listas.sillones;
+				
+				if (sillones.size()!=0){
+					
+					// Creamos el pdf QR
+					//Preparamos la lista para pasarle los datos a la clase QR
+					listas.listaDatosQR.add(PantallaInicial.pelicula.getImagenCartel());
+					listas.listaDatosQR.add(PantallaInicial.pelicula.getTitulo());
+					listas.listaDatosQR.add(sesion);
+					listas.listaDatosQR.add(hoy.getDayOfMonth() + "-" + hoy.getMonthValue() + "-" + hoy.getYear() + " // " 
+							+ hoy.getHour() + ":" + hoy.getMinute() + ":" + hoy.getSecond());
+					listas.listaDatosQR.add(Thread.currentThread());
+					
+					System.out.println(Thread.currentThread());
+					
+					for (int i = 0; i < sillones.size(); i++) {
+						
+						//listas.listaReservaFinal.get(listas.sillones.get(i)).getBoton().setEnabled(false);
+						
+						listas.listaReservaFinal.get(sillones.get(i)).getBoton().setIcon(
+								new ImageIcon(MainCine.class.getResource("/imagenesAsientos/reservado.png")));
+						
+						listas.listaDatosQR.add(listas.listaReservaFinal.get(sillones.get(i)).getAsiento());
+						System.out.println(listas.listaReservaFinal.get(sillones.get(i)).getAsiento());
+						
+						
+					}
+					sillones.clear();
+					listas.sillones.clear();
+					listas.tiempoReserva.cancel();
+					listas.cuentaAtras = true;
+					
+					CrearTicket.main(null);
+						//Generador.main();
+					
 
-				if (options != null) {
-					System.out.println("aceptar");
-					// Creamos el pdf
-
-				} else
-					System.out.println("cancelar");
-				// Se cancela la reserva y vuelve al estado anterior
+			}else JOptionPane.showMessageDialog(
+					   pantalla,
+					   "No hay nada seleccionado");	
 
 			}
 		});
@@ -335,26 +367,65 @@ class InicioCineVentanas5 extends Thread{
 					switch (RBoton.getText()) {
 					case "16:00":
 						
+						for (int j = 0; j < listas.listaReservas21.size(); j++) {
+							boolean reser = listas.listaReservas21.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "16:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas21;
 						pintarSala(listas.listaReservas21);
 						
 						break;
 
 					case "18:00":
+						
+						for (int j = 0; j < listas.listaReservas22.size(); j++) {
+							boolean reser = listas.listaReservas22.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "18:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas22;
 						pintarSala(listas.listaReservas22);
 						
 
 						break;
 					case "20:00":
+						
+						for (int j = 0; j < listas.listaReservas23.size(); j++) {
+							boolean reser = listas.listaReservas23.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "20:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas23;
 						pintarSala(listas.listaReservas23);
 						
 
 						break;
 					case "22:00":
+						
+						for (int j = 0; j < listas.listaReservas24.size(); j++) {
+							boolean reser = listas.listaReservas24.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "22:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas24;
 						pintarSala(listas.listaReservas24);
 						
 
 						break;
 					case "24:00":
+						
+						for (int j = 0; j < listas.listaReservas25.size(); j++) {
+							boolean reser = listas.listaReservas25.get(j).isReserva();
+							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "24:00";
+						}
+						
+						listas.listaReservaFinal =listas.listaReservas25;
 						pintarSala(listas.listaReservas25);
 						
 
