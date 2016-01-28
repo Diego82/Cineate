@@ -56,7 +56,7 @@ class InicioCineVentanas1 extends Thread{
 		System.out.println("Esto sale ahora");
 	}
 	
-	
+
 
 	/**
 	 * Launch the application.
@@ -195,11 +195,7 @@ class InicioCineVentanas1 extends Thread{
 				}else System.out.println("Ya se han creado las listas");
 				System.out.println("Tamaño de la lista despues de llamar a crear sala "+listas.listaReservas1.size());*/
 		
-		
-			
 
-		
-		
 		panel.setLayout(gl_panel);
 		panel.setLayout(gl_panel);
 
@@ -218,14 +214,7 @@ class InicioCineVentanas1 extends Thread{
 		etiquetaSpnosis.setVerticalAlignment(SwingConstants.TOP);
 		etiquetaSpnosis.setHorizontalAlignment(SwingConstants.LEFT);
 
-		JButton btnNewButton_1 = new JButton("");
 
-		btnNewButton_1.setOpaque(false);
-		btnNewButton_1.setContentAreaFilled(false);
-		btnNewButton_1.setBorderPainted(false);
-		btnNewButton_1.setBorder(null);
-
-		btnNewButton_1.setIcon(new ImageIcon(MainCine.class.getResource("/imagenesAsientos/libre16.png")));
 		// volver a la ventana principal
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
@@ -294,8 +283,7 @@ class InicioCineVentanas1 extends Thread{
 						.addGroup(gl_panel_1.createSequentialGroup()
 								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panel_1.createSequentialGroup().addGap(10)
-												.addComponent(btnNewButton_1))
+										
 						.addComponent(etiquetaSpnosis, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel_1.createSequentialGroup().addGap(34).addComponent(etiquetaImagen))
 						.addComponent(etiquetaTitulo, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE))
@@ -307,8 +295,7 @@ class InicioCineVentanas1 extends Thread{
 						.addGroup(gl_panel_1.createSequentialGroup().addContainerGap().addComponent(etiquetaTitulo)
 								.addGap(18).addComponent(etiquetaImagen).addGap(18)
 								.addComponent(etiquetaSpnosis, GroupLayout.PREFERRED_SIZE, 48,
-										GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnNewButton_1)
+										GroupLayout.PREFERRED_SIZE)					
 								.addPreferredGap(ComponentPlacement.RELATED, 430, Short.MAX_VALUE)
 								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE).addComponent(btnVolver)
 										.addComponent(btnReservar))
