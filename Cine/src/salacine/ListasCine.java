@@ -29,6 +29,8 @@ class ListasCine {
 	static List<Reserva> listaReservaFinal = Collections.synchronizedList(new ArrayList<Reserva>());
 	// mostrara los asientos que hemos reservado
 	ArrayList<Reserva> listaReservasTemporal = new ArrayList<Reserva>();
+	//array con los datos a pasar a el QR
+	static ArrayList<Object> listaDatosQR = new ArrayList<Object>();
 
 	// listas de la pelicula 1
 	List<Reserva> listaReservas1 = Collections.synchronizedList(new ArrayList<Reserva>());
@@ -157,7 +159,7 @@ class ListasCine {
 		}
 		// crear sillon
 		public Reserva crearSillon(int i) {
-			Reserva sillon = new Reserva(1, i, "1", "1", "1", 0, 1, true);
+			Reserva sillon = new Reserva(1, i, "1", "1", "1", 0, i, true);
 			return sillon;
 		}
 

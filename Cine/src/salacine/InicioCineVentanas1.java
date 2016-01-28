@@ -40,6 +40,7 @@ class InicioCineVentanas1 extends Thread{
 	JRadioButton hora[] = new JRadioButton[4];
 	ButtonGroup grupoRadioBotones= new ButtonGroup();
 	ArrayList<JButton> listaAsientos1 = new ArrayList<JButton>();
+	String sesion = null;
 	
 	ArrayList<JRadioButton> listaHoras = new ArrayList<JRadioButton>();
 	//listas para las horas
@@ -242,6 +243,16 @@ class InicioCineVentanas1 extends Thread{
 				if (listas.sillones.size()!=0){
 				
 					// Creamos el pdf
+					//Preparamos la lista para pasarle los datos a la clase QR
+					listas.listaDatosQR.add(PantallaInicial.pelicula.getImagenCartel());
+					listas.listaDatosQR.add(PantallaInicial.pelicula.getTitulo());
+					listas.listaDatosQR.add(sesion);
+					listas.listaDatosQR.add(hoy.getDayOfMonth() + "-" + hoy.getMonthValue() + "-" + hoy.getYear() + " // " 
+							+ hoy.getHour() + ":" + hoy.getMinute() + ":" + hoy.getSecond());
+					listas.listaDatosQR.add(Thread.currentThread());
+					
+					System.out.println(Thread.currentThread());
+					
 					for (int i = 0; i < listas.sillones.size(); i++) {
 						
 						//listas.listaReservaFinal.get(listas.sillones.get(i)).getBoton().setEnabled(false);
@@ -249,7 +260,8 @@ class InicioCineVentanas1 extends Thread{
 						listas.listaReservaFinal.get(listas.sillones.get(i)).getBoton().setIcon(
 								new ImageIcon(MainCine.class.getResource("/imagenesAsientos/reservado.png")));
 						
-						
+						listas.listaDatosQR.add(listas.listaReservaFinal.get(listas.sillones.get(i)).getAsiento());
+						System.out.println(listas.listaReservaFinal.get(listas.sillones.get(i)).getAsiento());
 						
 						
 					}
@@ -354,6 +366,7 @@ class InicioCineVentanas1 extends Thread{
 						for (int j = 0; j < listas.listaReservas1.size(); j++) {
 							boolean reser = listas.listaReservas1.get(j).isReserva();
 							listas.listaReservasTemporal.get(j).setReserva(reser);
+							sesion = "16:00";
 						}
 						
 						listas.listaReservaFinal =listas.listaReservas1;
