@@ -28,7 +28,7 @@ public class GeneradorQR {
 	private static int identificador=0;
 	
 	public static void main() throws IOException {
-		//
+		
 		identificador++;
 		/*POSICION 0: CARTEL PELICULA
 		POSICION 1 : TITULO PELICULA

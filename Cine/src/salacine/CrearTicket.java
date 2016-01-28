@@ -33,7 +33,7 @@ public class CrearTicket {
 		POSICION 4: HILO
 		POSICION 5 EN ADELANTE: ASIENTOS RESERVADOS*/
 		
-		//
+		
 		// Se crea el documento
 		Document documento = new Document();
 
