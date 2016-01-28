@@ -24,7 +24,15 @@ public class CrearTicket {
 	static Image foto;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		/*POSICION 0: CARTEL PELICULA
+		POSICION 1 : TITULO PELICULA
+		POSICION 2: SESION
+		POSICION 3: DIA/HORA
+		POSICION 4: HILO
+		POSICION 5 EN ADELANTE: ASIENTOS RESERVADOS*/
+		
+		
 		// Se crea el documento
 		Document documento = new Document();
 

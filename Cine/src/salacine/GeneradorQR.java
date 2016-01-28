@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Writer;
 import com.google.zxing.WriterException;
@@ -21,15 +23,44 @@ public class GeneradorQR {
 	private static final String RUTA_IMAGEN = System.getProperty("user.home") + "/qrZxing.png";
 	private static final int ancho = 500;
 	private static final int alto = 500;
-	private static String datos = ""+PantallaInicial.pelicula.getTitulo()+"\n"
-			+PantallaInicial.pelicula.getId_pelicula();
-	
-	
-	
-	
+	private static String datos;
+	private static String butacas;
+	private static int identificador=0;
 	
 	public static void main() throws IOException {
 		
+		identificador++;
+		/*POSICION 0: CARTEL PELICULA
+		POSICION 1 : TITULO PELICULA
+		POSICION 2: SESION
+		POSICION 3: DIA/HORA
+		POSICION 4: HILO
+		POSICION 5 EN ADELANTE: ASIENTOS RESERVADOS*/
+
+		butacas="\nButacas Reservadas: ";
+		
+		/*Recorremos la lista de datosQR que contiene los asientos reservados a partir de la posicion 5*/
+		
+			
+		for(int i=5;i<=ListasCine.listaDatosQR.size()-1;i++){
+			butacas+=1+(Integer.parseInt(ListasCine.listaDatosQR.get(i).toString()))+", ";
+		}
+		
+		
+		/*Concatenamos los datos declarados arriba con los asisentos reservados 
+		 extraidos desde el bucle quitandole los dos ultimo caracteres para que no 
+		 aparezca la ultima coma*/
+		
+		datos="Pelicula: "+ListasCine.listaDatosQR.get(1)+"\n"
+				+ "Sesion: "+ListasCine.listaDatosQR.get(2);
+		
+		datos+=butacas.substring(0, butacas.length()-2);
+		
+		datos+="\n ID: "+identificador;
+		
+		butacas="";
+		
+		ListasCine.listaDatosQR.clear();
 		/*Creamos el objeto que tiene los datos a dibujar así como 
 		el Writer para darle formato a los datos*/
 		
@@ -82,6 +113,8 @@ public class GeneradorQR {
 		    //Cerramos el flujo de datos
 		    
 		    qrCode.close();
+		    
+		    
 		    
 		    
 		    //Utilizamos la clase Desktop para ver la imagen con el visor de imágenes predeterminado del sistema operativo
