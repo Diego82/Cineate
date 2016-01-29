@@ -238,7 +238,7 @@ class InicioCineVentanas2 extends Thread{
 						//listas.listaReservaFinal.get(listas.sillones.get(i)).getBoton().setEnabled(false);
 						
 						listas.listaReservaFinal.get(sillones.get(i)).getBoton().setIcon(
-								new ImageIcon(MainCine.class.getResource("/imagenesAsientos/reservado.png")));
+								new ImageIcon(MainCine.class.getResource("/imagenesAsientos/ocupado16.png")));
 						
 						listas.listaDatosQR.add(listas.listaReservaFinal.get(sillones.get(i)).getAsiento());
 						System.out.println(listas.listaReservaFinal.get(sillones.get(i)).getAsiento());

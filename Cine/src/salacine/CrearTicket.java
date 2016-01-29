@@ -117,7 +117,8 @@ public class CrearTicket {
 		celda = new PdfPCell(new Paragraph("Pelicula: "+ListasCine.listaDatosQR.get(1),
 				FontFactory.getFont("arial", 
 						10, 
-						Font.BOLD))); // 
+						Font.BOLDITALIC,// 
+						BaseColor.BLUE))); // color
 		celda.setBorderColor(BaseColor.LIGHT_GRAY);
 		celda.setBorderWidth(1.0f);
 		celda.setColspan(3);
@@ -127,8 +128,8 @@ public class CrearTicket {
 		celda = new PdfPCell(new Paragraph("Lugar: MULTICINES CINEA-T",
 				FontFactory.getFont("arial",
 						10, 
-						Font.BOLD, 
-						BaseColor.BLACK))); 
+						Font.BOLDITALIC,// 
+						BaseColor.BLUE))); // color
 		celda.setColspan(3);
 		celda.setBorderColor(BaseColor.LIGHT_GRAY);
 		celda.setBorderWidth(1.0f);
@@ -138,8 +139,8 @@ public class CrearTicket {
 		celda = new PdfPCell(new Paragraph("Sesion: "+ListasCine.listaDatosQR.get(2),
 				FontFactory.getFont("arial", 
 						10, 
-						Font.BOLD, 
-						BaseColor.BLACK)));
+						Font.BOLDITALIC,// 
+						BaseColor.BLUE))); // color
 		celda.setColspan(3);
 		celda.setBorderColor(BaseColor.LIGHT_GRAY);
 		celda.setBorderWidth(1.0f);
@@ -149,8 +150,8 @@ public class CrearTicket {
 		celda = new PdfPCell(new Paragraph("Fecha de compra: "+ListasCine.listaDatosQR.get(3),
 				FontFactory.getFont("arial",
 						10, 
-						Font.BOLD, 
-						BaseColor.BLACK))); 
+						Font.BOLDITALIC,// 
+						BaseColor.BLUE))); // color
 		celda.setColspan(3);
 		celda.setBorderColor(BaseColor.LIGHT_GRAY);
 		celda.setBorderWidth(1.0f);
@@ -171,8 +172,8 @@ public class CrearTicket {
 		celda = new PdfPCell(new Paragraph(butacas,
 				FontFactory.getFont("arial", 
 						10, 
-						Font.BOLD, 
-						BaseColor.BLACK))); 
+						Font.BOLDITALIC,// 
+						BaseColor.BLUE))); // color
 		celda.setColspan(3);
 		celda.setBorderColor(BaseColor.LIGHT_GRAY);
 		celda.setBorderWidth(1.0f);
@@ -190,8 +191,8 @@ public class CrearTicket {
 		celda = new PdfPCell(new Paragraph("Comprador: "+ListasCine.listaDatosQR.get(4),
 				FontFactory.getFont("arial", 
 						10, 
-						Font.BOLD, 
-						BaseColor.BLACK)));
+						Font.BOLDITALIC,// 
+						BaseColor.BLUE))); // color
 		celda.setColspan(3);
 		celda.setBorderColor(BaseColor.LIGHT_GRAY);
 		celda.setBorderWidth(1.0f);
